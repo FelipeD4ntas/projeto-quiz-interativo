@@ -3,8 +3,9 @@ const respostasCertas = 'V';
 const popup = document.querySelector('#popup');
 const resultado = document.querySelector('#saida');
 
+form.addEventListener('submit', verificaRespostas);
 
-form.addEventListener('submit', event => {
+function verificaRespostas(event) {
     event.preventDefault();
 
     let pontos = 0;
@@ -30,10 +31,10 @@ form.addEventListener('submit', event => {
     saida.innerText = `Você acertou ${pontos} de 10 perguntas.`
 
     popup.classList.add('show-popup');
+    
     popup.addEventListener('click', fechar_popup);
     
-});
-
+}
 
 function fechar_popup(event) {
     const elementoClicado = event.target.classList.value;
