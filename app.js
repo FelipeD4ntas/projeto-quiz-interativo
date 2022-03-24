@@ -32,15 +32,15 @@ form.addEventListener('submit', event => {
     popup.classList.add('show-popup');
     popup.addEventListener('click', fechar_popup);
     
-    function fechar_popup(event) {
-        const elementoClicado = event.target.classList.value;
-        const classNames = ['closedPopup', 'tentar-novamente', 'show-popup'];
-        const closedPopup = classNames.some(className => className === elementoClicado);
-
-        if (closedPopup) {
-            popup.classList.toggle('show-popup');
-        }
-    }
 });
 
 
+function fechar_popup(event) {
+    const elementoClicado = event.target.classList.value;
+    const classNames = ['closedPopup', 'tentar-novamente', 'show-popup'];
+    const closedPopup = classNames.some(className => className === elementoClicado);
+
+    if (closedPopup) {
+        popup.classList.toggle('show-popup');
+    }
+}
