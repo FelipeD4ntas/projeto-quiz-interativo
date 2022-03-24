@@ -4,6 +4,7 @@ const popup = document.querySelector('#popup');
 const resultado = document.querySelector('#saida');
 
 form.addEventListener('submit', verificaRespostas);
+popup.addEventListener('click', fechar_popup);
 
 function verificaRespostas(event) {
     event.preventDefault();
@@ -31,9 +32,6 @@ function verificaRespostas(event) {
     saida.innerText = `Você acertou ${pontos} de 10 perguntas.`
 
     popup.classList.add('show-popup');
-    
-    popup.addEventListener('click', fechar_popup);
-    
 }
 
 function fechar_popup(event) {
