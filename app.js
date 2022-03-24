@@ -1,5 +1,8 @@
 const form = document.querySelector('.quiz-form');
-const respostasCertas = ['C','C','C','C','C','C','C','C','C','C'];
+const respostasCertas = 'V';
+const popup = document.querySelector('#popup');
+const resultado = document.querySelector('#saida');
+
 
 form.addEventListener('submit', event => {
     event.preventDefault();
@@ -18,10 +21,26 @@ form.addEventListener('submit', event => {
         form.inputQuestion10.value
     ];
 
-    respostasUsuario.forEach((respostaUsuario, index) => {
-        if(respostaUsuario === respostasCertas[index]) {
+    respostasUsuario.forEach((respostaUsuario) => {
+        if(respostaUsuario === respostasCertas) {
             pontos += 1;
         };
     });
-    alert(`Você acertou ${pontos} de 10`);
-})
+
+    saida.innerText = `Você acertou ${pontos} de 10 perguntas.`
+
+    popup.classList.add('show-popup');
+    popup.addEventListener('click', fechar_popup);
+    
+    function fechar_popup(event) {
+        const elementoClicado = event.target.classList.value;
+        const classNames = ['closedPopup', 'tentar-novamente', 'show-popup'];
+        const closedPopup = classNames.some(className => className === elementoClicado);
+
+        if (closedPopup) {
+            popup.classList.toggle('show-popup');
+        }
+    }
+});
+
+

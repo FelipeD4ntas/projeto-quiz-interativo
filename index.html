@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <title>Quiz | Você consegue acertar qual é a série pelo título em português de Portugal?</title>
 </head>
 <body>
+  <!-- Respostas Certas com o value recebendo V e erradas recebendo X.
+  Para assim facilitar no JavaScript e não precisar usar um array com as repostas certas e verificar um por um de seus valores com o index, assim somente usando uma variável com o valor V para comparar com as respostas do usuário -->
   <div class="intro py-3 bg-danger text-center">
     <div class="container">
       <h2 class="text-light display-3 my-4">Quiz</h2>
@@ -22,14 +25,14 @@
           <p class="lead font-weight-normal">1. "Ficheiros Secretos" é o nome dado para a série:</p>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion1" value="C" checked>
+              <input type="radio" name="inputQuestion1" value="V" checked>
               Arquivo X
             </label>
           </div>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion1" value="E">
-              Stranger things
+              <input type="radio" name="inputQuestion1" value="X">
+              Agentes da S.H.I.E.L.D
             </label>
           </div>
         </div>
@@ -38,13 +41,13 @@
           <p class="lead font-weight-normal">2. "Ruptura Total" é o nome dado para a série de drama:</p>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion2" value="E" checked>
+              <input type="radio" name="inputQuestion2" value="X" checked>
               Greys Anatomy
             </label>
           </div>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion2" value="C">
+              <input type="radio" name="inputQuestion2" value="V">
               Breaking Bad
             </label>
           </div>
@@ -54,13 +57,13 @@
           <p class="lead font-weight-normal">3. "Competente e Descarada" é o título de:</p>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion3" value="E" checked>
+              <input type="radio" name="inputQuestion3" value="X" checked>
               O Gambito da Rainha
             </label>
           </div>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion3" value="C">
+              <input type="radio" name="inputQuestion3" value="V">
               The Nany
             </label>
           </div>
@@ -70,13 +73,13 @@
           <p class="lead font-weight-normal">4. "Foi Assim que Aconteceu" é a famosa série:</p>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion4" value="C" checked>
+              <input type="radio" name="inputQuestion4" value="V" checked>
               How I Met Your Mother
             </label>
           </div>
           <div class="form-check my-2 text-white-50">
             <label class="form-check-label">
-              <input type="radio" name="inputQuestion4" value="E">
+              <input type="radio" name="inputQuestion4" value="X">
               O Auto da Compadecida
             </label>
           </div>
@@ -86,13 +89,13 @@
             <p class="lead font-weight-normal">5. "Que Loucura de Família" é a série de comédia:</p>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion5" value="C" checked>
+                <input type="radio" name="inputQuestion5" value="V" checked>
                 That 70’s Show
               </label>
             </div>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion5" value="E">
+                <input type="radio" name="inputQuestion5" value="X">
                 Todo mundo Odeia o Chris
               </label>
             </div>
@@ -102,13 +105,13 @@
             <p class="lead font-weight-normal">6. "Patriarca de Estilo" é a série conhecida como:</p>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion6" value="E" checked>
+                <input type="radio" name="inputQuestion6" value="X" checked>
                 The Office
               </label>
             </div>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion6" value="C">
+                <input type="radio" name="inputQuestion6" value="V">
                 Eu, a Patroa e as Crianças 
               </label>
             </div>
@@ -118,13 +121,13 @@
             <p class="lead font-weight-normal">7. "Aberto até de madrugada" é a conhecida série:</p>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion7" value="E" checked>
+                <input type="radio" name="inputQuestion7" value="X" checked>
                 Scrubs
               </label>
             </div>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion7" value="C">
+                <input type="radio" name="inputQuestion7" value="V">
                 Um Drink no Inferno 
               </label>
             </div>
@@ -134,13 +137,13 @@
             <p class="lead font-weight-normal">8. "Apanha-me se Puderes" é a série de advocacia conhecida como:</p>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion8" value="C" checked>
+                <input type="radio" name="inputQuestion8" value="V" checked>
                 White Colar
               </label>
             </div>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion8" value="E">
+                <input type="radio" name="inputQuestion8" value="X">
                 How to Get Away with Murder
               </label>
             </div>
@@ -150,13 +153,13 @@
             <p class="lead font-weight-normal">9. "Pastilha Elástica" é a série conhecida como:
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion9" value="E" checked>
+                <input type="radio" name="inputQuestion9" value="X" checked>
                 Lost
               </label>
             </div>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion9" value="C">
+                <input type="radio" name="inputQuestion9" value="V">
                 Chewing Gum
               </label>
             </div>
@@ -166,13 +169,13 @@
             <p class="lead font-weight-normal">10. "Duas Miúdas nas Lonas" é a série de duas amigas que é conhecida no Brasil como:
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion10" value="C" checked>
+                <input type="radio" name="inputQuestion10" value="V" checked>
                 Broke Girls
               </label>
             </div>
             <div class="form-check my-2 text-white-50">
               <label class="form-check-label">
-                <input type="radio" name="inputQuestion10" value="E">
+                <input type="radio" name="inputQuestion10" value="X">
                 Amigas Para Sempre
               </label>
             </div>
@@ -183,6 +186,14 @@
           <button class="btn bg-danger text-light">Enviar</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div id="popup">
+    <div class="conteudo-popup">
+      <button class="closedPopup">X</button>
+      <p id="saida"></p>
+      <button class="tentar-novamente">Tentar Novamente</button>
     </div>
   </div>
 
