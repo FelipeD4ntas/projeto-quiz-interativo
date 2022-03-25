@@ -25,13 +25,29 @@ function verificaRespostas(event) {
 
     respostasUsuario.forEach((respostaUsuario) => {
         if(respostaUsuario === respostasCertas) {
-            pontos += 1;
+            pontos += 10;
         };
     });
 
-    saida.innerText = `Você acertou ${pontos} de 10 perguntas.`
+    
 
-    popup.classList.add('show-popup');
+    popup.classList.toggle('show-popup');
+
+    scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+
+    let counter = 0;
+
+    const timer = setInterval(() => {
+        if (counter === pontos) {
+            clearInterval(timer);
+        };
+        saida.innerText = `Você acertou ${counter}% do Quiz.`;
+        counter++
+    }, 20);
 }
 
 function fechar_popup(event) {
@@ -43,3 +59,6 @@ function fechar_popup(event) {
         popup.classList.toggle('show-popup');
     }
 }
+
+
+
