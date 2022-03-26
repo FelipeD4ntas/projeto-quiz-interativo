@@ -1,53 +1,64 @@
 const form = document.querySelector('.quiz-form');
 const respostasCertas = ['A', 'B', 'B', 'D', 'C', 'B', 'C', 'C', 'C', 'A'];
 const popup = document.querySelector('#popup');
-const resultado = document.querySelector('#saida');
+const resultado = document.querySelector('#saida-resultado-pontos-user');
 
-form.addEventListener('submit', verificaRespostas);
-popup.addEventListener('click', fechar_popup);
+let pontos = 0;
 
-function verificaRespostas(event) {
-    event.preventDefault();
-   
-    let pontos = 0;
-    let counter = 0;
-    const respostasUsuario = [
-        form.inputQuestion1.value,
-        form.inputQuestion2.value,
-        form.inputQuestion3.value,
-        form.inputQuestion4.value,
-        form.inputQuestion5.value,
-        form.inputQuestion6.value,
-        form.inputQuestion7.value,
-        form.inputQuestion8.value,
-        form.inputQuestion9.value,
-        form.inputQuestion10.value
-    ];
-    const options = {
+function getRespostasUsuario() {
+    const respostasUsuario = [];
+
+    respostasCertas.forEach((_, index) => {
+        const respostaUsuario = form[`inputQuestion${index + 1}`].value
+        respostasUsuario.push(respostaUsuario);
+    });
+
+    return respostasUsuario;
+}
+
+function calculaPontosUsuario(respostasUsuario) {
+    pontos = 0
+    
+    respostasUsuario.forEach((respostasUsuario , index) => {
+        const acertou = respostasUsuario === respostasCertas[index];
+
+        if(acertou) {
+            pontos += 10;
+        };
+
+    });    
+};
+
+function mostrarPontosUser() {
+    scrollTo({
         top: 0,
         left: 0,
         behavior: 'smooth'
-    };
-
-    scrollTo(options);
-    respostasUsuario.forEach(respostasUser);
+    });
+    
     popup.classList.toggle('show-popup');
+};
 
-    const timer = setInterval(contador, 50);
+function animandoPontos() {
+    let counter = 0;
 
-    function contador() {
+    const timer = setInterval(() => {
         if (counter === pontos) {
             clearInterval(timer);
         };
-        saida.innerText = `Você acertou ${counter}% do Quiz.`;
-        counter++
-    }
 
-    function respostasUser(respostaUsuario, index) {
-        if(respostaUsuario === respostasCertas[index]) {
-            pontos += 10;
-        };
-    };
+        resultado.innerText = `Você acertou ${counter++}% do Quiz.`;
+    }, 50);
+};
+
+function verificaRespostas(event) {
+    event.preventDefault();
+    
+    const respostasUsuario = getRespostasUsuario();
+
+    calculaPontosUsuario(respostasUsuario);
+    mostrarPontosUser();
+    animandoPontos();
 }
 
 function fechar_popup(event) {
@@ -61,5 +72,5 @@ function fechar_popup(event) {
     
 };
 
-
-
+form.addEventListener('submit', verificaRespostas);
+popup.addEventListener('click', fechar_popup);
