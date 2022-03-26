@@ -1,5 +1,5 @@
 const form = document.querySelector('.quiz-form');
-const respostasCertas = 'V';
+const respostasCertas = ['A', 'B', 'B', 'D', 'C', 'B', 'C', 'C', 'C', 'A'];
 const popup = document.querySelector('#popup');
 const resultado = document.querySelector('#saida');
 
@@ -8,8 +8,9 @@ popup.addEventListener('click', fechar_popup);
 
 function verificaRespostas(event) {
     event.preventDefault();
-
+   
     let pontos = 0;
+    let counter = 0;
     const respostasUsuario = [
         form.inputQuestion1.value,
         form.inputQuestion2.value,
@@ -22,32 +23,31 @@ function verificaRespostas(event) {
         form.inputQuestion9.value,
         form.inputQuestion10.value
     ];
-
-    respostasUsuario.forEach((respostaUsuario) => {
-        if(respostaUsuario === respostasCertas) {
-            pontos += 10;
-        };
-    });
-
-    
-
-    popup.classList.toggle('show-popup');
-
-    scrollTo({
+    const options = {
         top: 0,
         left: 0,
         behavior: 'smooth'
-    });
+    };
 
-    let counter = 0;
+    scrollTo(options);
+    respostasUsuario.forEach(respostasUser);
+    popup.classList.toggle('show-popup');
 
-    const timer = setInterval(() => {
+    const timer = setInterval(contador, 50);
+
+    function contador() {
         if (counter === pontos) {
             clearInterval(timer);
         };
         saida.innerText = `Você acertou ${counter}% do Quiz.`;
         counter++
-    }, 20);
+    }
+
+    function respostasUser(respostaUsuario, index) {
+        if(respostaUsuario === respostasCertas[index]) {
+            pontos += 10;
+        };
+    };
 }
 
 function fechar_popup(event) {
@@ -57,8 +57,9 @@ function fechar_popup(event) {
 
     if (closedPopup) {
         popup.classList.toggle('show-popup');
-    }
-}
+    };
+    
+};
 
 
 
