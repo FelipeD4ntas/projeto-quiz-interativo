@@ -6,15 +6,8 @@ const resultado = document.querySelector('#saida-resultado-pontos-user');
 let pontos = 0;
 
 function getRespostasUsuario() {
-    const respostasUsuario = [];
-
-    respostasCertas.forEach((_, index) => {
-        const respostaUsuario = form[`inputQuestion${index + 1}`].value
-        respostasUsuario.push(respostaUsuario);
-    });
-
-    return respostasUsuario;
-}
+    return respostasUsuario = respostasCertas.map((_, index) => form[`inputQuestion${index + 1}`].value);
+};
 
 function calculaPontosUsuario(respostasUsuario) {
     pontos = 0
@@ -25,7 +18,6 @@ function calculaPontosUsuario(respostasUsuario) {
         if(acertou) {
             pontos += 10;
         };
-
     });    
 };
 
