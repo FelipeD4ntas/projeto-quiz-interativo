@@ -10,8 +10,6 @@ function getRespostasUsuario() {
 };
 
 function calculaPontosUsuario(respostasUsuario) {
-    pontos = 0
-    
     respostasUsuario.forEach((respostasUsuario , index) => {
         const acertou = respostasUsuario === respostasCertas[index];
 
@@ -43,11 +41,16 @@ function animandoPontos() {
     }, 50);
 };
 
+function resetarPontosUser() {
+    return pontos = 0
+}
+
 function verificaRespostas(event) {
     event.preventDefault();
     
     const respostasUsuario = getRespostasUsuario();
 
+    resetarPontosUser();
     calculaPontosUsuario(respostasUsuario);
     mostrarPontosUser();
     animandoPontos();
