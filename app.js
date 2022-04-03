@@ -3,20 +3,16 @@ const respostasCertas = ['A', 'B', 'B', 'D', 'C', 'B', 'C', 'C', 'C', 'A'];
 const popup = document.querySelector('#popup');
 const resultado = document.querySelector('#saida-resultado-pontos-user');
 
-let pontos = 0;
-
 function getRespostasUsuario() {
-    return respostasUsuario = respostasCertas.map((_, index) => form[`inputQuestion${index + 1}`].value);
+    return respostasUsuario = respostasCertas.map((_, index) => 
+        form[`inputQuestion${index + 1}`].value);
 };
 
 function calculaPontosUsuario(respostasUsuario) {
-    respostasUsuario.forEach((respostasUsuario , index) => {
-        const acertou = respostasUsuario === respostasCertas[index];
-
-        if(acertou) {
-            pontos += 10;
-        };
-    });    
+    const pontos = respostasUsuario.reduce((acc, respostaUsuario, index) => 
+        respostaUsuario === respostasCertas[index] ? acc + 10 : acc, 0);
+    
+    animandoPontos(pontos);
 };
 
 function mostrarPontosUser() {
@@ -29,7 +25,7 @@ function mostrarPontosUser() {
     popup.classList.toggle('show-popup');
 };
 
-function animandoPontos() {
+function animandoPontos(pontos) {
     let counter = 0;
 
     const timer = setInterval(() => {
@@ -49,11 +45,9 @@ function verificaRespostas(event) {
     event.preventDefault();
     
     const respostasUsuario = getRespostasUsuario();
-
     resetarPontosUser();
     calculaPontosUsuario(respostasUsuario);
     mostrarPontosUser();
-    animandoPontos();
 }
 
 function fechar_popup(event) {
